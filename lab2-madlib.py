@@ -1,6 +1,7 @@
 """
 Write a simple program that prompts the user for several inputs then prints a Mad Lib as the result.
 
+Optional:
 Make a functional solution that utilizes lists the .split() method.
 
 Make it a repeatable game. Prompt the user for whether they'd like to hear the story, using a while loop, until the answer is 'no'. 
@@ -19,9 +20,12 @@ adjectives = input("Now enter three different adjectives separated by a comma: "
 adjective1,adjective2,adjective3 = adjectives.split(',')
  
 
-print("Dear School Nurse:")
-print(
-	f"{silly_word} {last_name} will not be attending school today. They have come down with a case of {illness} and has horrible {plural_noun} and a/an {adjective1} fever. We have made an appointment with the {adjective2} Dr. {silly_word2}, who studied for many years in {place} and has {number} degrees in pediatrics. They will send you all the information you need. Thank you!"
-	)
-print("Sincerely")
-print(f"Mrs. {adjective3}.") 
+madlib = f"""Dear School Nurse:
+{silly_word} {last_name} will not be attending school today.
+They have come down with a case of {illness} and has horrible {plural_noun} and a/an {adjective1} fever.
+We have made an appointment with the {adjective2} Dr. {silly_word2}, who studied for many years in {place} and has {number} degrees in pediatrics.
+They will send you all the information you need. Thank you!
+Sincerely,
+Mrs. {adjective3}."""
+
+print(madlib)
