@@ -10,13 +10,13 @@ After playing, ask them if they'd like to play again. If they say yes, restart t
 """
 import random
 
+
 def calc_winner(comp_choice, user_choice):
 	defeats = {
 		'rock': 'scissor', 
 		'paper': 'rock', 
 		'scissor': 'paper'
 	}
-
 	if comp_choice == user_choice:
 		return 'Tie'
 	elif defeats[user_choice] == comp_choice:
@@ -24,13 +24,31 @@ def calc_winner(comp_choice, user_choice):
 	else:
 		return "Computer wins!"
 
-valid_choice = ['rock', 'paper', 'scissor']
-while True:
-	user_choice = input("What'll it be rock, paper, or scissor? ").strip().lower()
-	if user_choice not in rps:
-		break
-	print("You can only choose between rock, paper, or scissor")
-computer_choice = random.choice(valid_choice)
-print(computer_choice)
+valid_choices = ['rock', 'paper', 'scissor']
+play_game = True
+rps_valid = True
 
-print(calc_winner(computer_choice, user_choice)
+# valid_inputs = ['yes', 'no', 'y', 'n']
+while play_game:
+	play = input('Do you want to play rps, yes/no?: ').lower().strip()
+	if play == 'yes' or play == 'y':
+		# while loop for RPS validiation 
+		while rps_valid:
+			your_choice = input("What'll it be rock, paper, or scissor? ").strip().lower()
+			print("Your choice: " + your_choice)
+			if your_choice in valid_choices:
+				computer_choice = random.choice(valid_choices)
+				print("I chose: " + computer_choice)
+				print(calc_winner(computer_choice, your_choice))
+				rps_valid = False
+			else:
+				print("You can only choose between rock, paper, or scissor")
+	elif play == 'no' or play == 'n':
+		#if play.startswith('n'):
+		print("Goodbye!")
+		play_game = False
+	else: 
+		# print("Not Valid Response")	
+		print("Enter yes, no, y, or n only!")
+
+	
