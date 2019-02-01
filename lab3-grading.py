@@ -40,7 +40,7 @@ while True:
 
 	print(str(letter_grade + sign))
 
-	# read, evaluate, print treatment
+	# read, evaluate, print:
 	valid_inputs = ['yes', 'no', 'y', 'n']
 	while True:
 		play_again = input('Do you want to continue: ').lower().strip()
