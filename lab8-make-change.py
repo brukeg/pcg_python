@@ -9,4 +9,21 @@ Have the user enter the total number in pennies, e.g. for $1.36, the user will e
 Have the user enter a dollar amount (1.36), convert this to the total in pennies.
 """
 
-while True:
+
+dollar_amount = input("What's the total amount?: ")
+
+total = int(dollar_amount) * 100.0
+quarters = int(total // 25)
+dimes = int(total // 10)
+nickles = int(total // 5)
+pennies = int(total // 1)
+
+print(f"There are {quarters} whole quarters, or {dimes} whole dimes, or {nickles} whole nickles, or {pennies} pennies in {total/100}.")
+
+pennies = input(f"Enter another dollar amount, but this time give me the total number of pennies: ")
+dollar_amount = int(pennies) / 100
+print(f"That's a dollar amount of ${dollar_amount}.")
+
+dollars = input(f"Now, give me a decimal dollar amount, and I'll give you the number of pennies back: ")
+pennies_in = int(dollars) * 100
+print(f"That's {pennie_in} dollars, yo!")
