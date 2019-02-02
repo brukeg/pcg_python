@@ -9,10 +9,11 @@ Have the user enter the total number in pennies, e.g. for $1.36, the user will e
 Have the user enter a dollar amount (1.36), convert this to the total in pennies.
 """
 
+# get the input, make quarters, subtract quaters from the input, then get dimes from what's left over...
 
 dollar_amount = input("What's the total amount?: ")
 
-total = int(dollar_amount) * 100.0
+total = int(dollar_amount) * 100
 quarters = int(total // 25)
 dimes = int(total // 10)
 nickles = int(total // 5)
@@ -25,5 +26,5 @@ dollar_amount = int(pennies) / 100
 print(f"That's a dollar amount of ${dollar_amount}.")
 
 dollars = input(f"Now, give me a decimal dollar amount, and I'll give you the number of pennies back: ")
-pennies_in = int(dollars) * 100
-print(f"That's {pennie_in} dollars, yo!")
+pennies_in = int(float(dollars) * 100)
+print(f"That's {pennies_in} pennies, yo!")
