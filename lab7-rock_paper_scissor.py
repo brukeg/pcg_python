@@ -26,13 +26,12 @@ def calc_winner(comp_choice, user_choice):
 
 valid_choices = ['rock', 'paper', 'scissor']
 play_game = True
-rps_valid = True
 
-# valid_inputs = ['yes', 'no', 'y', 'n']
+
 while play_game:
+	rps_valid = True
 	play = input('Do you want to play rps, yes/no?: ').lower().strip()
 	if play == 'yes' or play == 'y':
-		# while loop for RPS validiation 
 		while rps_valid:
 			your_choice = input("What'll it be rock, paper, or scissor? ").strip().lower()
 			print("Your choice: " + your_choice)
@@ -44,11 +43,9 @@ while play_game:
 			else:
 				print("You can only choose between rock, paper, or scissor")
 	elif play == 'no' or play == 'n':
-		#if play.startswith('n'):
 		print("Goodbye!")
 		play_game = False
-	else: 
-		# print("Not Valid Response")	
+	else: 	
 		print("Enter yes, no, y, or n only!")
 
 	
