@@ -29,9 +29,9 @@ pennies = sub_total
 print(f"There are {quarters} quarters, {dimes} dimes, {nickles} nickles, and {pennies} pennies in ${total/100}.")
 
 pennies = input(f"Enter another dollar amount, but this time give me the total number of pennies: ")
-dollar_amount = int(pennies) / 100
+dollar_amount = float(pennies) / 100
 print(f"That's ${dollar_amount}.")
 
 dollars = input(f"Now, give me a decimal dollar amount, and I'll give you the number of pennies back: ")
-pennies_in = int(float(dollars) * 100)
+pennies_in = float(dollars) * 100
 print(f"That's {pennies_in} pennies, yo!")
