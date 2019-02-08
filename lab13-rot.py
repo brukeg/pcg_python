@@ -7,12 +7,93 @@ v2:
 Allow the user to input the amount of rotation used in the encryption / decryption. eg. rot_n
 """
 
-english_alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-rot_13 = ['n','o','p','q','r','s','t','u','v','w','x','y','z','a','b','c','d','e','f','g','h','i','j','k','l','m']
+english_alphabet = ['abcdefghijklmnopqrstuvwxyz']
+rot_13 = ['nopqrstuvwxyzabcdefghijklm']
 
-def combine(a, b):
-	return {a[i]: b[i], for i in range(0, len(a))}
+def encode(message):
+	encoded = ''
+	for char in message:
+		index = english_alphabet.find(char)
+		if index == -1:
+			encoded += char
+		else:
+			encoded += rot13[index]
+	return encoded
 
-decrypt_dict = combine(english_alphabet, rot_13)
+# work with indices decrypt_dict = combine(english_alphabet, rot_13)
+def decode(message):
+	decoded = ''
+	for char in message:
+		index = rot13.find(char)
+		if index == -1:
+			decoded += char
+		else:
+			decoded += english_alphabet[index]
+	return decoded
 
-# work with indices
+def encoded(message, n):
+	n %= 13
+	translate = alphabet[n:] + alphabet[:n]
+	encoded = ''
+	for char in message:
+		index = alphabet.find(char)
+		if index == -1:
+			encoded += char
+		else:
+			encoded += translate[index]
+	return encoded
+
+def decoded(message, n):
+	n %= 13
+	transalate = alphabet[n:] + alphabet[:n]
+	decoded = ''
+	for char in message:
+		index = transalate.find(char)
+		if index == -1:
+			encoded += char
+		else:
+			encoded += alphabet[index]
+	return encoded
+
+def main():
+	replay = True
+	print('-'*60)
+	print('Welcome to the ROT cypher')
+	print('-'*60)
+	while replay:
+		while True:
+			operation = input('Do you want to encode or decode?: ').strip().lower()
+			if operation in ['encode', 'e', 'decode', 'd']:
+				break
+		while True:
+			try:
+				n = int(input("How much do you want to rotate by?: "))
+				break
+			except ValueError:
+				print('Error: enter a whole number.')
+
+		message = input('Enter message to cypher: ')
+		if operation.startswith('e'):
+			print('-'*60)
+			print('Here is your encoded message: ')
+			print(encoded(message, n))
+			print('-'*60)
+		else:
+			print('-'*60)
+			print('Here is your dencoded message: ')
+			print(decoded(message, n))
+			print('-'*60)
+
+		while True:
+			play_again = input("Do yo want to play again?: ").strip().lower()
+			if play_again in ['yes', 'y', 'no', 'n']:
+				break
+
+			if play_again.startswith('n'):
+				replay	= False
+				print('-'*60)
+				print('Goodbye!')
+				print('-'*60)
+
+if __name__ == '__main__':
+main()
