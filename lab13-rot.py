@@ -32,7 +32,7 @@ def decode(message):
 	return decoded
 
 def encoded(message, n):
-	n %= 13
+	n %= 26 # wrap around 26
 	translate = alphabet[n:] + alphabet[:n]
 	encoded = ''
 	for char in message:
@@ -44,7 +44,7 @@ def encoded(message, n):
 	return encoded
 
 def decoded(message, n):
-	n %= 13
+	n %= 26
 	transalate = alphabet[n:] + alphabet[:n]
 	decoded = ''
 	for char in message:
@@ -54,6 +54,25 @@ def decoded(message, n):
 		else:
 			encoded += alphabet[index]
 	return encoded
+
+def cypher(message, n, decode=False):
+	n %= 26
+	transalate = alphabet[n:] + alphabet[:n]
+	if decode:
+		#decode logic
+		codec = translate
+		translate = alphabet
+	else:
+		#encode logic
+		codec = alphabet
+	coded = ''
+	for char in message:
+		index = codec.find(char)
+		if index == -1:
+			coded += char
+		else:
+			coded += translate[index]
+	return coded
 
 def main():
 	replay = True
@@ -76,12 +95,12 @@ def main():
 		if operation.startswith('e'):
 			print('-'*60)
 			print('Here is your encoded message: ')
-			print(encoded(message, n))
+			print(cypher(message, n))
 			print('-'*60)
 		else:
 			print('-'*60)
 			print('Here is your dencoded message: ')
-			print(decoded(message, n))
+			print(cypher(message, n, True))
 			print('-'*60)
 
 		while True:
