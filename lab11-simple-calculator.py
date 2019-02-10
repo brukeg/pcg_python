@@ -4,6 +4,12 @@ and division. Ask the user for an operator and each operand. Don't forget that i
 which you can convert to a float using float(user_input) where user_input is the string you got from input. 
 Below is some sample input/output.
 
+Version 2
+Allow the user to keep performing operations until they say 'done'. Use while True and break. 
+Below is some sample input/output.
+
+Version 3 (optional)
+Allow the user to enter a full arithmetic expression and use eval to evaluate it.
 """
 
 while True:
