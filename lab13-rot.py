@@ -44,7 +44,7 @@ def encoded(message, n):
 	return encoded
 
 def decoded(message, n):
-	n %= 26
+	n %= 26 # wrap around 26
 	transalate = alphabet[n:] + alphabet[:n]
 	decoded = ''
 	for char in message:
@@ -56,7 +56,7 @@ def decoded(message, n):
 	return encoded
 
 def cypher(message, n, decode=False):
-	n %= 26
+	n %= 26 # wrap around 26
 	transalate = alphabet[n:] + alphabet[:n]
 	if decode:
 		#decode logic
