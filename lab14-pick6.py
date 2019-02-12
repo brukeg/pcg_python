@@ -41,14 +41,15 @@ import random
 winning_ticket = [random.randint(0, 99) for n in range(6)]
 
 # generate a list of lotto ticket lists
-tickets = [[random.randint(0, 99) for n in range(6)] for n in range(3)]
+tickets = [[random.randint(0, 99) for n in range(6)] for n in range(100000)]
 
 
-def matched(w, t):
-    """ checks for matches in each list by order and value """
+def pick6(w, t):
+    """ play pick6 many times and determine net balance """
     sub_balance = 0
     match_list = []
     for lists in t:
+        """ checks for matches in each list by order and value """
         index = 0
         matches = 0
         for value in lists:
@@ -59,28 +60,26 @@ def matched(w, t):
                 index += 1
         match_list.append(matches)
         sub_balance -= 2
-    return match_list, sub_balance
 
-def monies(list, balance):
-    """find out how much money you win or lose"""
-    for i in a:
-        winnings = 0
-        if i = 1:
+    winnings = 0
+    for i in match_list:
+        """ asses the winnings based on the match_list """
+        if i == 1:
             winnings += 4
-        elif i = 2:
+        elif i == 2:
             winnings += 7
-        elif i = 3:
+        elif i == 3:
             winnings += 100
-        elif i = 4:
+        elif i == 4:
             winnings += 50000
-        elif i = 5:
+        elif i == 5:
             winnings += 1000000
-        elif i = 6:
+        elif i == 6:
             winnings += 25000000
         else:
             winnings += 0
 
-    return winnings + balance
+    return sub_balance + winnings, (winnings + sub_balance)/sub_balance
 
-print(matched(winning_ticket, tickets))
-# test list: print(matched([1, 2, 3], [[1, 2, 3], [1, 3, 3], [0, 0, 0]]))
+# test list:
+# print(pick6([1, 2, 3], [[1, 2, 3], [1, 3, 3], [0, 0, 0]]))
