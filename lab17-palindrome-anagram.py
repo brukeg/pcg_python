@@ -7,6 +7,7 @@ letters of one can be rearranged to fit the other. Write a palindrome and anagra
 def check_palindrome(word):
 	reverse = ''
 	word = input("Enter a word: ").strip().lower()
+	# a for loop for reversing the order of the letters in a word.
 	for l in word:
 		reverse = l + reverse
 	if reverse == word:
