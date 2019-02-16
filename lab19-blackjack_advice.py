@@ -17,21 +17,33 @@ one half, add 1, for the other, add 11. This ensures if you have multiple aces t
 """
 
 
-cards = {'a':1, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9, '10':10, 'j':10, 'q':10, 'k':10}
+values = {'a':1, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9, '10':10, 'j':10, 'q':10, 'k':10}
 
 first = input("What's your first card?: ").strip().lower()
 second = input("What's your second card?: ").strip().lower()
 third = input("What's your second card?: ").strip().lower()
 
-def advise(a, b, c):
-	total = cards[first] + cards[second] + cards[third]
-	if total < 17:
-		return "Hit"
-	elif 17 <= total < 21:
-		return "Stay"
-	elif total == 21:
-		return "Blackjack!"
-	else:
-		return "Already Busted " 
+def aces(a, b, c):
+	cards = [first, second, third]
+	cards2 = {}
+	for index, i in enumerate(cards):
+		if cards[index] == 'a':
+			cards2['a'] = 11
+		else:
+			cards2[key] = values[value]
+	return cards2, cards
 
-print(advise(first, second, third))
+print(aces(first, second, third))
+# def advise(a, b, c):
+# 	total = values[first] + values[second] + values[third]
+# 	if total < 17:
+# 		return "Hit"
+# 	elif 17 <= total < 21:
+# 		return "Stay"
+# 	elif total == 21:
+# 		return "Blackjack!"
+# 	else:
+# 		return "Already Busted " 
+
+# print(advise(first, second, third))
+
