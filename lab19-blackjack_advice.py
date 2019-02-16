@@ -16,8 +16,10 @@ Try generating a list of all possible hand values by doubling the number of valu
 one half, add 1, for the other, add 11. This ensures if you have multiple aces that you account for the full range of possible values.
 """
 
+# If "A' duplicate values
 
-values = {'a':1, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9, '10':10, 'j':10, 'q':10, 'k':10}
+
+values = {'a':1, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9, '10':10, 'j':10, 'q':10, 'k':10, 'a2':11}
 
 first = input("What's your first card?: ").strip().lower()
 second = input("What's your second card?: ").strip().lower()
@@ -25,25 +27,38 @@ third = input("What's your second card?: ").strip().lower()
 
 def aces(a, b, c):
 	cards = [first, second, third]
-	cards2 = {}
-	for index, i in enumerate(cards):
-		if cards[index] == 'a':
-			cards2['a'] = 11
+	cards2 = []
+	have_ace = False
+	first_total = values[first] + values[second] + values[third]
+	for i in cards:
+		if i == 'a' and not have_ace:
+			cards2.append(values['a2'])
+			have_ace = True
 		else:
-			cards2[key] = values[value]
-	return cards2, cards
+			cards2.append(values[i])
+	second_total = cards2[0] + cards2[1] + cards2[2]
 
-print(aces(first, second, third))
-# def advise(a, b, c):
-# 	total = values[first] + values[second] + values[third]
-# 	if total < 17:
-# 		return "Hit"
-# 	elif 17 <= total < 21:
-# 		return "Stay"
-# 	elif total == 21:
-# 		return "Blackjack!"
-# 	else:
-# 		return "Already Busted " 
+print(advise(first, second, third))
+	
+def advise(a, b, c):
+	if first_total < 17:
+		return "Hit"
+	elif 17 <= first_total < 21:
+		return "Stay"
+	elif first_total == 21:
+		return "Blackjack!"
+	else:
+		return "Already Busted"
 
-# print(advise(first, second, third))
+	
+	# if second_total < 17:
+	# 	return "Hit"
+	# elif 17 <= second_total < 21:
+	# 	return "Stay"
+	# elif second_total == 21:
+	# 	return "Blackjack!"
+	# else:
+	# 	return "Already Busted"  
+
+print(advise(first, second, third))
 
