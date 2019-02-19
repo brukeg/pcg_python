@@ -25,11 +25,12 @@ first = input("What's your first card?: ").strip().lower()
 second = input("What's your second card?: ").strip().lower()
 third = input("What's your second card?: ").strip().lower()
 
-def aces(a, b, c):
+def advise(a, b, c):
 	cards = [first, second, third]
 	cards2 = []
 	have_ace = False
 	first_total = values[first] + values[second] + values[third]
+	eval_list = []
 	for i in cards:
 		if i == 'a' and not have_ace:
 			cards2.append(values['a2'])
@@ -37,28 +38,23 @@ def aces(a, b, c):
 		else:
 			cards2.append(values[i])
 	second_total = cards2[0] + cards2[1] + cards2[2]
+	eval_list.append(first_total)
+	eval_list.append(second_total)
 
-print(advise(first, second, third))
-	
-def advise(a, b, c):
-	if first_total < 17:
-		return "Hit"
-	elif 17 <= first_total < 21:
-		return "Stay"
-	elif first_total == 21:
-		return "Blackjack!"
+	advice = []
+	for a in eval_list:
+		if a < 17:
+			advice.append("Hit")
+		elif 17 <= a < 21:
+			advice.append("Stay")
+		elif a == 21:
+			advice.append("Blackjack!")
+		else:
+			advice.append("Busted")
+	if advice[0] == advice[1]:
+		return advice[0]
 	else:
-		return "Already Busted"
-
-	
-	# if second_total < 17:
-	# 	return "Hit"
-	# elif 17 <= second_total < 21:
-	# 	return "Stay"
-	# elif second_total == 21:
-	# 	return "Blackjack!"
-	# else:
-	# 	return "Already Busted"  
+		return f"It's {advice[0]} or {advice[1]}"
 
 print(advise(first, second, third))
 
