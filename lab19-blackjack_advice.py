@@ -26,7 +26,9 @@ the full range of possible values.
 # If "A' duplicate values
 
 
-values = {'a': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'j': 10, 'q': 10, 'k': 10, 'a2': 11}
+values = {'a': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8,
+          '9': 9, '10': 10, 'j': 10, 'q': 10, 'k': 10, 'a2': 11
+          }
 
 first = input("What's your first card?: ").strip().lower()
 second = input("What's your second card?: ").strip().lower()
