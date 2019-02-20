@@ -7,12 +7,12 @@ def ccv(number_string):
     number is valid as a boolean.
     """
     # Convert the input string into a list of ints
-    string_to_list = number_string.split(' ')  
+    string_to_list = number_string.split(' ')
     check_digit = string_to_list[-1]  # That is the check digit.
     slice_off = ''.join(string_to_list.pop())  # Slice off the last digit.
     reverse = string_to_list[::-1]  # Reverse the digits.
     # Double every other element in the reversed list.
-    reverse[::2] = [int(n)*2 for n in reverse[::2]] 
+    reverse[::2] = [int(n)*2 for n in reverse[::2]]
     minus_nine = []
     addition = 0
     for i in reverse:
