@@ -19,13 +19,14 @@ for i in range(1, len(lines)):
 	entry = dict(zip(keys, entry))
 	contacts.append(entry)
 
+
 """
 Create a record: ask the user for each attribute, 
 add a new contact to your contact list with the attributes that the user entered.
 """
-name = input("Enter a name: ")
-phone = input("Enter a phone number: ")
-city = input("Enter the city name: ")
+name = input("Enter a name to add to your contacts: ")
+phone = input("What's their phone number?: ")
+city = input("What city do they live in?: ")
 
 contacts.append({'name': name, 'phone': phone, 'city': city})
 
@@ -34,16 +35,17 @@ contacts.append({'name': name, 'phone': phone, 'city': city})
 Retrieve a record: ask the user for the contact's name, 
 find the user with the given name, and display their information
 """
-retriever =  input("What is the contacts name?: ")
+retriever =  input("What is the contacts name you want to retrieve?: ")
 for i in contacts:
 	if i["name"] == retriever:
 		print(i)
+
 
 """
 Update a record: ask the user for the contact's name, then for which attribute of the 
 user they'd like to update and the value of the attribute they'd like to set.
 """
-contact_update = input("What's the contact's name?: ")
+contact_update = input("What's the contact's name that you want to update?: ")
 attribute = input("Which attribute do you want to update (name, phone, city)?: ")
 attribute_value = input("What should it be replaced by?: ")
 
@@ -62,3 +64,4 @@ del_contact = input("Which contact do you want to remove?: ")
 for index, i in enumerate(contacts):
 	if i["name"] == del_contact:
 		del contacts[index]
+		print(contacts)
