@@ -13,14 +13,14 @@ def load(csv):
     with open(csv) as file:
         lines = file.read().split('\n')
 
-    contacts = []
+    contact_list = []
     keys = lines[0].split(',')
 
     for i in range(1, len(lines)):
         entry = lines[i].split(',')
         entry = dict(zip(keys, entry))
-        contacts.append(entry)
-    return (contact_list, props)
+        contact_list.append(entry)
+    return (contact_list, keys)
 
 
 def find_contact(contact_list, name):
@@ -73,7 +73,7 @@ def update(contact_list, name, updated_info):
     if index is None:
         return f"Error: {'name'} does not exist!"
     contact_list[index].update(updated_info)
-    return f"updated contact for {"name"}"
+    return f"updated contact for {name}."
 
 
 def delete(contact_list, name):
@@ -84,10 +84,10 @@ def delete(contact_list, name):
 
     index = find_contact(contact_list, name)
     if index is None:
-        return f"Error: {'name'} does not exist!"
+        return f"Error: {name} does not exist!"
 
     contact_list.pop(index)
-    return f"{'name'} deleted."
+    return f"{name} deleted."
 
 
 def save(contact_list, header, csv):
@@ -108,7 +108,7 @@ def print_contact(contact):
     """
     if type(contact) is dict:
         for k, v in contact.items():
-            print(f"{'k'}: {'v'}")
+            print(f"{k}: {v}")
         else:
             print(contact)
 
@@ -123,7 +123,7 @@ def list_all(contact_list):
 
 
 if __name__ == '__main__':
-    contacts, props = load('contact_list.csv')
+    contacts, keys = load('contact_list.csv')
     loop = True
     valid_inputs = [
         'c', 'create',
@@ -162,7 +162,7 @@ if __name__ == '__main__':
 
         if cmd in ['x', 'exit', 'quit']:
             # save contacts as csv
-            print(save(contacts, props, 'contact_list.csv'))
+            print(save(contacts, keys, 'contact_list.csv'))
             loop = False
             print('Goodbye!')
 
@@ -174,7 +174,7 @@ if __name__ == '__main__':
 
         elif cmd.startswith('c'):
             contact = {}
-            for prop in props:
+            for prop in keys:
                 contact[prop] = input(f'{prop}: ')
             print(create(contacts, contact))
 
@@ -190,7 +190,7 @@ if __name__ == '__main__':
                     create_instead = input(f'Do you want to create a contact for {name}? ').strip().lower()
                     if create_instead in ['y', 'yes']:
                         contact = {}
-                        for prop in props:
+                        for prop in keys:
                             contact[prop] = input(f'{prop}: ')
                         print(create(contacts, contact))
                 continue
@@ -203,7 +203,7 @@ if __name__ == '__main__':
 
             elif cmd.startswith('u'):
                 contact = {}
-                for prop in props:
+                for prop in keys:
                     val = input(f'{prop}: ')
                     if val:
                         contact[prop] = val
