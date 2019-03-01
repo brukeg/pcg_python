@@ -30,22 +30,98 @@ Allow the user to enter commands into a REPL.
 class Atm():
     def __init__(self):
         self.balance = 0
+        self.transactions = []
 
     def check_balance(self):
         return f"Your balance is ${self.balance}."
 
     def deposit(self, amount):
         self.balance += amount
-        return f"Your balance is now ${self.balance}."
+        self.transactions.append(f"Deposit of ${amount}")
+        print(f'Your deposit of ${amount} was successful and your current balance is ${self.balance}')
 
     def check_withdraw(self, amount):
-        if self.balance - amount < 0:
-            return f"Sorry, {amount} is greater than your available balance of {self.balance}" 
-        else:
-            self.balance -= amount
-            return f"Your balance after withdrawal is {self.balance}."
+        return amount <= self.balance
 
-my_atm = Atm()
-print(my_atm.check_balance())
-print(my_atm.deposit(1000))
-print(my_atm.check_withdraw(125))
+    def withdraw(self, amount):
+        if self.check_withdraw(amount):
+            self.balance -= amount
+            self.transactions.append(f'Withdraw of ${amount}.')
+            print(f'Your withdraw of ${amount} was successful and your current balance is ${self.balance}')
+        else:
+            print('Insufficient funds for this transaction')
+
+    def print_transactions(self):
+        for counter, transaction in enumerate(self.transactions):
+            print(counter+1, transaction)
+
+if __name__ == '__main__':
+    atm = Atm()
+    loop = True
+    valid_inputs = [
+        'd', 'deposit', 
+        'w', 'withdraw',
+        'c', 'check balance',
+        'h', 'history',
+        'o', 'commands',
+        'e', 'exit'
+    ]
+    commands = """
+        Commands:
+        (d)eposit
+        (w)withdraw
+        (c)heck balance
+        (h)istory
+        c(o)mmands
+        (e)xit
+    """
+
+    print("Welcome to the ATM. How can we be of service?")
+    print(commands)
+
+    while loop:
+        print('-'*80)
+        valid = False
+
+        while not valid:
+            cmd = input('cmd> ').strip().lower()
+            if cmd in valid_inputs:
+                valid = True
+            else:
+                print('Invalid input!')
+                print(commands)
+
+        if cmd in ['d', 'deposit']:
+            amount = int(input('How much would you like to deposit? '))
+            atm.deposit(amount)
+
+        elif cmd in ['w', 'withdraw']:
+            amount = int(input('How much would you like to withdraw? '))
+            atm.withdraw(amount)
+        
+        elif cmd in ['c', 'check balance']:
+            print(atm.check_balance())
+
+        elif cmd in ['h', 'history']:
+            print("Transaction history:")
+            if len(atm.transactions) > 0:
+                atm.print_transactions()
+            else:
+                print("0 transactions")
+
+        elif cmd in ['o', 'commands']:
+            print(commands)
+
+        elif cmd in ['e', 'exit']:
+            loop = False
+            print('Thank you, goodbye!')
+
+# my_atm = Atm()
+# my_atm.check_balance()
+# my_atm.deposit(1000)
+# my_atm.withdraw(5)
+# my_atm.deposit(100)
+# my_atm.deposit(10)
+# my_atm.withdraw(125)
+# my_atm.withdraw(1)
+# my_atm.print_transactions()
