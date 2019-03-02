@@ -27,6 +27,7 @@ Allow the user to enter commands into a REPL.
 > balance: $5
 """
 
+
 class Atm():
     def __init__(self):
         self.balance = 0
@@ -55,16 +56,18 @@ class Atm():
         for counter, transaction in enumerate(self.transactions):
             print(counter+1, transaction)
 
-if __name__ == '__main__':
+
+def main():
     atm = Atm()
     loop = True
     valid_inputs = [
-        'd', 'deposit', 
+        'd', 'deposit',
         'w', 'withdraw',
         'c', 'check balance',
         'h', 'history',
         'o', 'commands',
         'e', 'exit'
+        'help', 'quit'
     ]
     commands = """
         Commands:
@@ -76,7 +79,7 @@ if __name__ == '__main__':
         (e)xit
     """
 
-    print("Welcome to the ATM. How can we be of service?")
+    print("Welcome to the ATM.")
     print(commands)
 
     while loop:
@@ -84,6 +87,7 @@ if __name__ == '__main__':
         valid = False
 
         while not valid:
+            print("What would you like to do?")
             cmd = input('cmd> ').strip().lower()
             if cmd in valid_inputs:
                 valid = True
@@ -98,7 +102,7 @@ if __name__ == '__main__':
         elif cmd in ['w', 'withdraw']:
             amount = int(input('How much would you like to withdraw? '))
             atm.withdraw(amount)
-        
+
         elif cmd in ['c', 'check balance']:
             print(atm.check_balance())
 
@@ -109,19 +113,13 @@ if __name__ == '__main__':
             else:
                 print("0 transactions")
 
-        elif cmd in ['o', 'commands']:
+        elif cmd in ['o', 'commands', 'help']:
             print(commands)
 
-        elif cmd in ['e', 'exit']:
+        elif cmd in ['e', 'exit', 'quit']:
             loop = False
             print('Thank you, goodbye!')
 
-# my_atm = Atm()
-# my_atm.check_balance()
-# my_atm.deposit(1000)
-# my_atm.withdraw(5)
-# my_atm.deposit(100)
-# my_atm.deposit(10)
-# my_atm.withdraw(125)
-# my_atm.withdraw(1)
-# my_atm.print_transactions()
+
+if __name__ == '__main__':
+    main()
