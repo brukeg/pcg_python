@@ -64,9 +64,12 @@ False
 
 
 class Player():
-    def __init__(self):
-        self.name = ['player1', 'player2']
-        self.token = ['X', 'O']
+    def __init__(self, name=None, token=None):
+        self.name = name
+        self.token = token
+
+    def __repr__(self):
+        return f"{self.name} is the {self.token} symbol."
 
 
 class Game():
@@ -83,11 +86,22 @@ class Game():
             ret += '|'.join(row) + '\n'
         return ret
 
-    def move(self, x=None, y=None, player=None):
-        self.board[0][0] = Player(self.token[0])
+    def move(self, x, y, player):
+        self.board[y][x] = player.token
+        return self.board
 
     def calc_winner():
-        pass
+        if self.board[0][0] == 'X' and self.board[1][0] == 'X' and self.board[2][0] == 'X':
+           return f'{player.token} is the winner!'
+        
+        elif self.board[0][1] == 'X' and self.board[1][1] == 'X' and self.board[2][1] == 'X':
+            return f'{playertoken} is the winner!'
+        
+        elif self.board[0][2] == 'X' and self.board[1][2] == 'X' and self.board[2][2] == 'X':
+            return f'{playertoken} is the winner!'
+        
+        else:
+            None
 
     def is_full(self):
         pass
@@ -96,8 +110,17 @@ class Game():
         pass
 
 
+p1 = Player('player1', 'X')
+p2 = Player('player2', 'O')
+
+print(p1)
+print(p2)
+
 game = Game()
-print(game.move())
+game.move(2, 1, p1)
+print(game)
+game.move(1, 1, p2)
+print(game)
 
 
 # def main():
