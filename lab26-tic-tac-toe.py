@@ -65,7 +65,7 @@ False
 
 class Player():
     def __init__(self):
-        self.name = ''
+        self.name = ['player1', 'player2']
         self.token = ['X', 'O']
 
 
@@ -84,7 +84,7 @@ class Game():
         return ret
 
     def move(self, x=None, y=None, player=None):
-        self.board[x][y] = self.token
+        self.board[0][0] = Player(self.token[0])
 
     def calc_winner():
         pass
@@ -94,6 +94,7 @@ class Game():
 
     def is_game_over(self):
         pass
+
 
 game = Game()
 print(game.move())
