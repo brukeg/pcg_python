@@ -90,21 +90,38 @@ class Game():
         self.board[y][x] = player.token
         return self.board
 
-    def calc_winner():
-        if self.board[0][0] == 'X' and self.board[1][0] == 'X' and self.board[2][0] == 'X':
-           return f'{player.token} is the winner!'
+    def calc_winner(self): # [column][row]
+        if self.board[0][0] == self.board[1][0] ==  self.board[2][0]:
+            return f'{self.board[0][0]} is the winner!', True
         
-        elif self.board[0][1] == 'X' and self.board[1][1] == 'X' and self.board[2][1] == 'X':
-            return f'{playertoken} is the winner!'
+        elif self.board[0][1] == self.board[1][1] == self.board[2][1]:
+            return f'{self.board[0][1]} is the winner!', True
         
-        elif self.board[0][2] == 'X' and self.board[1][2] == 'X' and self.board[2][2] == 'X':
-            return f'{playertoken} is the winner!'
+        elif self.board[0][2] == self.board[1][2] == self.board[2][2]:
+            return f'{self.board[0][2]} is the winner!', True
+
+        elif self.board[0][0] == self.board[0][1] == self.board[0][2]:
+            return f'{self.board[0][0]} is the winner!', True
+
+        elif self.board[1][0] == self.board[1][1] == self.board[1][2]:
+            return f'{self.board[1][0]} is the winner!', True
         
+        elif self.board[0][0] == self.board[1][1] == self.board[2][2]:
+            return f'{self.board[0][0]} is the winner!', True
+
+        elif self.board[0][2] == self.board[1][1] == self.board[2][0]:
+            return f'{self.board[0][2]} is the winner!', True
+
         else:
-            None
+            return False
 
     def is_full(self):
-        pass
+        for row in self.board:
+            for i in row:
+                if i == ' ':
+                    return False
+        return True
+    
 
     def is_game_over(self):
         pass
@@ -117,10 +134,20 @@ print(p1)
 print(p2)
 
 game = Game()
+game.move(0, 0, p1)
+game.move(0, 1, p2)
+game.move(1, 0, p2)
 game.move(2, 1, p1)
-print(game)
 game.move(1, 1, p2)
+game.move(0, 2, p1)
+game.move(2, 0, p1)
+game.move(1, 2, p1)
+game.move(2, 2, p2)
+print(game.is_full())
+
 print(game)
+print(game.calc_winner())
+
 
 
 # def main():
