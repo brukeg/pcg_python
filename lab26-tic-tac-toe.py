@@ -124,7 +124,10 @@ class Game():
     
 
     def is_game_over(self):
-        pass
+        if self.is_full() or self.calc_winner():
+            return True
+        else:
+            return False
 
 
 p1 = Player('player1', 'X')
@@ -147,6 +150,7 @@ print(game.is_full())
 
 print(game)
 print(game.calc_winner())
+print(game.is_game_over())
 
 
 
