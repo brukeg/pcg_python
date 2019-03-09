@@ -4,62 +4,6 @@ into a 3x3 grid. Whoever gets three in a row first wins.
 
 You will write a Player class and Game class to model Tic Tac Toe, and a
 function main that models gameplay taking in user inputs through REPL.
-
-The Player class has the following properties:
-
-name = player name
-token = 'X' or 'O'
-
-
-The Game class has the following properties:
-
-board = your representation of the board
-You can represent the board however you like,
-such as a 2D list, tuples, or dictionary.
-
-
-The Game class has the following methods:
-
-__repr__() Returns a pretty string representation of the game board
-print(board)
-X| |
-O|X|O
- | |
-
-move(x, y, player) Place a player's token character string at a given
-coordinate (top-left is 0, 0), x is horizontal position,
-y is vertical position.
->>> board.move(2, 1, player_1)
- | |
- | |X
- | |
-
-calc_winner() What token character string has won or None if no one has.
-X| |
-O|X|O
- | |X
->>> board.calc_winner()
-X
-
-is_full() Returns true if the game board is full.
-X|O|X
-X|X|O
-O|O|X
->>> board.is_full()
-True
-
-is_game_over() Returns true if the game board is full or a player has won.
-X|O|X
-X|X|O
-O|O|X
->>> board.is_game_over()
-True
-
-X|O|
- | |X
- | |
->>> board.is_game_over()
-False
 """
 
 
@@ -68,8 +12,8 @@ class Player():
         self.name = name
         self.token = token
 
-    def __repr__(self):
-        return f"{self.name} is the {self.token} symbol."
+    # def __repr__(self):
+        # return f"{self.name} is the {self.token} symbol."
 
 
 class Game():
@@ -91,25 +35,26 @@ class Game():
         return self.board
 
     def calc_winner(self): # [column][row]
-        if self.board[0][0] == self.board[1][0] ==  self.board[2][0]:
+
+        if self.board[0][0] == self.board[1][0] ==  self.board[2][0] and self.board[0][0] != ' ':
             return f'{self.board[0][0]} is the winner!', True
         
-        elif self.board[0][1] == self.board[1][1] == self.board[2][1]:
+        elif self.board[0][1] == self.board[1][1] == self.board[2][1] and self.board[0][1] != ' ':
             return f'{self.board[0][1]} is the winner!', True
         
-        elif self.board[0][2] == self.board[1][2] == self.board[2][2]:
+        elif self.board[0][2] == self.board[1][2] == self.board[2][2] and self.board[0][2] != ' ':
             return f'{self.board[0][2]} is the winner!', True
 
-        elif self.board[0][0] == self.board[0][1] == self.board[0][2]:
+        elif self.board[0][0] == self.board[0][1] == self.board[0][2] and self.board[0][0] != ' ':
             return f'{self.board[0][0]} is the winner!', True
 
-        elif self.board[1][0] == self.board[1][1] == self.board[1][2]:
+        elif self.board[1][0] == self.board[1][1] == self.board[1][2] and self.board[1][0] != ' ':
             return f'{self.board[1][0]} is the winner!', True
         
-        elif self.board[0][0] == self.board[1][1] == self.board[2][2]:
+        elif self.board[0][0] == self.board[1][1] == self.board[2][2] and self.board[0][0] != ' ':
             return f'{self.board[0][0]} is the winner!', True
 
-        elif self.board[0][2] == self.board[1][1] == self.board[2][0]:
+        elif self.board[0][2] == self.board[1][1] == self.board[2][0] and self.board[0][2] != ' ':
             return f'{self.board[0][2]} is the winner!', True
 
         else:
@@ -130,33 +75,108 @@ class Game():
             return False
 
 
-p1 = Player('player1', 'X')
-p2 = Player('player2', 'O')
+# p1 = Player('player1', 'X')
+# p2 = Player('player2', 'O')
 
-print(p1)
-print(p2)
+# print(p1)
+# print(p2)
 
-game = Game()
-game.move(0, 0, p1)
-game.move(0, 1, p2)
-game.move(1, 0, p2)
-game.move(2, 1, p1)
-game.move(1, 1, p2)
-game.move(0, 2, p1)
-game.move(2, 0, p1)
-game.move(1, 2, p1)
-game.move(2, 2, p2)
-print(game.is_full())
-
-print(game)
-print(game.calc_winner())
-print(game.is_game_over())
+# game = Game()
+# game.move(0, 0, p1)
+# game.move(0, 1, p2)
+# game.move(1, 0, p2)
+# game.move(2, 1, p1)
+# game.move(1, 1, p2)
+# game.move(0, 2, p1)
+# game.move(2, 0, p1)
+# game.move(1, 2, p1)
+# game.move(2, 2, p2)
 
 
+# print(game)
+# print("Is the game board full?", game.is_full())
+# print("Is there a winner?", game.calc_winner())
+# print("Is the game over?", game.is_game_over())
 
-# def main():
-#     game = Game()
+
+def main():
+    game = Game()
+    valid_inputs = [1,2,3,4,5,6,7,8,9]
+    loop = True
+    game_board_grid = [
+        ['1', '2', '3'],
+        ['4', '5', '6'],
+        ['7', '8', '9']
+    ]
+    
+    board_grid = ''
+    for row in game_board_grid:
+        board_grid += '|'.join(row) + '\n'
+    print("Welcome to Tic-Tac-Toe!")
+
+    token1 = input('Player 1 pick a token, x or o: ').strip().lower()
+    token2 = ''
+    
+    if token1 == 'x':
+        token2 += 'o'
+    else:
+        token2 += 'x'
+    
+    p1 = Player('player1', token1)
+    p2 = Player('player2', token2)
+
+    print(f'Player 2 is {token2} and player 1 is {token1}! Now let\'s play a game.')
+    print("You can pick from from the following valid positions only:" + '\n' + board_grid)
+
+    turn = 0
+    while loop:
+        player = p1
+        
+        if turn % 2 == 0:
+            player = p1
+        else:
+            player = p2
+
+        choice = input(f'make your move {player.name}: ')
+
+        if choice == '1':
+            game.move(0,0, player)
+            print(game)
+        elif choice == '2':
+            game.move(1,0, player)
+            print(game)
+        elif choice == '3':
+            game.move(2,0, player)
+            print(game)
+        elif choice == '4':
+            game.move(0,1, player)
+            print(game)
+        elif choice == '5':
+            game.move(1,1, player)
+            print(game)
+        elif choice == '6':
+            game.move(2,1, player)
+            print(game)
+        elif choice == '7':
+            game.move(0,2, player)
+            print(game)
+        elif choice == '8':
+            game.move(1,2, player)
+            print(game)
+        elif choice == '9':
+            game.move(2,2, player)
+            print(game)
+
+        
+        if game.is_game_over():
+            loop = False
+            if game.is_full():
+                print("Rats, it's a scratch!")
+            else:
+                print(game.calc_winner())
+        else:
+            turn += 1
 
 
-# if __name__ == '__main__':
-#     main()
+if __name__ == '__main__':
+    main()
