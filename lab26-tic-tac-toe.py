@@ -4,6 +4,10 @@ into a 3x3 grid. Whoever gets three in a row first wins.
 
 You will write a Player class and Game class to model Tic Tac Toe, and a
 function main that models gameplay taking in user inputs through REPL.
+
+1. Remove used position from valid inputs
+2. Play again?
+
 """
 
 
@@ -75,33 +79,9 @@ class Game():
             return False
 
 
-# p1 = Player('player1', 'X')
-# p2 = Player('player2', 'O')
-
-# print(p1)
-# print(p2)
-
-# game = Game()
-# game.move(0, 0, p1)
-# game.move(0, 1, p2)
-# game.move(1, 0, p2)
-# game.move(2, 1, p1)
-# game.move(1, 1, p2)
-# game.move(0, 2, p1)
-# game.move(2, 0, p1)
-# game.move(1, 2, p1)
-# game.move(2, 2, p2)
-
-
-# print(game)
-# print("Is the game board full?", game.is_full())
-# print("Is there a winner?", game.calc_winner())
-# print("Is the game over?", game.is_game_over())
-
-
 def main():
     game = Game()
-    valid_inputs = [1,2,3,4,5,6,7,8,9]
+    valid_inputs = ['1','2','3','4','5','6','7','8','9']
     loop = True
     game_board_grid = [
         ['1', '2', '3'],
@@ -112,7 +92,7 @@ def main():
     board_grid = ''
     for row in game_board_grid:
         board_grid += '|'.join(row) + '\n'
-    print("Welcome to Tic-Tac-Toe!")
+    print("Welcome to Tic-Tac-Toe!" + '\n')
 
     token1 = input('Player 1 pick a token, x or o: ').strip().lower()
     token2 = ''
@@ -125,11 +105,12 @@ def main():
     p1 = Player('player1', token1)
     p2 = Player('player2', token2)
 
-    print(f'Player 2 is {token2} and player 1 is {token1}! Now let\'s play a game.')
+    print('\n' + f'Player 2 is {token2} and player 1 is {token1}! Now let\'s play a game.' + '\n')
     print("You can pick from from the following valid positions only:" + '\n' + board_grid)
 
     turn = 0
     while loop:
+        valid = False
         player = p1
         
         if turn % 2 == 0:
@@ -137,7 +118,14 @@ def main():
         else:
             player = p2
 
-        choice = input(f'make your move {player.name}: ')
+        while not valid:
+            choice = input(f'make your move {player.name}: ')
+            if choice in valid_inputs:
+                valid = True
+            else:
+                print('Invalid input! Pick from a number below')
+                print(board_grid)  
+
 
         if choice == '1':
             game.move(0,0, player)
@@ -170,8 +158,11 @@ def main():
         
         if game.is_game_over():
             loop = False
-            if game.is_full():
+            if game.is_full() and not game.calc_winner():
                 print("Rats, it's a scratch!")
+                # again = input("Would you like to play again? (y/n): ").strip().lower()
+                # if again.startswith('y'):
+                    
             else:
                 print(game.calc_winner())
         else:
