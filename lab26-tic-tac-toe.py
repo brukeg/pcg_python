@@ -6,7 +6,10 @@ You will write a Player class and Game class to model Tic Tac Toe, and a
 function main that models gameplay taking in user inputs through REPL.
 
 1. Remove used position from valid inputs
+- replace number position with *
+- pop off number from valid inputs
 2. Play again?
+3. print help/board
 
 """
 
@@ -81,7 +84,7 @@ class Game():
 
 def main():
     game = Game()
-    valid_inputs = ['1','2','3','4','5','6','7','8','9']
+    valid_inputs = ['1','2','3','4','5','6','7','8','9', 'help', 'h']
     loop = True
     game_board_grid = [
         ['1', '2', '3'],
@@ -107,6 +110,7 @@ def main():
 
     print('\n' + f'Player 2 is {token2} and player 1 is {token1}! Now let\'s play a game.' + '\n')
     print("You can pick from from the following valid positions only:" + '\n' + board_grid)
+    print("Print valid positions anytime with: \'(h)elp\' ")
 
     turn = 0
     while loop:
@@ -154,17 +158,33 @@ def main():
         elif choice == '9':
             game.move(2,2, player)
             print(game)
+        elif choice.startswith('h'):
+            print('*'*10)
+            print(board_grid)
+            turn -= 1
 
         
         if game.is_game_over():
             loop = False
             if game.is_full() and not game.calc_winner():
                 print("Rats, it's a scratch!")
-                # again = input("Would you like to play again? (y/n): ").strip().lower()
-                # if again.startswith('y'):
-                    
+                again = input("Would you like to play again? (y/n): ").strip().lower()
+                if again.startswith('y'):
+                    main()
+                elif again.startswith('n'):
+                    print("Goodbye!")
+                else:   
+                    print("Enter yes, no, y, or n only!")
+
             else:
                 print(game.calc_winner())
+                again = input("Would you like to play again? (y/n): ").strip().lower()
+                if again.startswith('y'):
+                    main()
+                elif again.startswith('n'):
+                    print("Goodbye!")
+                else:   
+                    print("Enter yes, no, y, or n only!")
         else:
             turn += 1
 
