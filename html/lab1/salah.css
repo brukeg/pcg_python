@@ -1,0 +1,28 @@
+body {
+	display: table-cell;
+	text-align: center;
+	font-family: verdana;
+	background-color: crimson;
+	color: white;
+}
+
+.bio {
+	padding-left: 200px;
+	padding-right: 200px;
+	text-align: center;
+}
+
+a {
+	color: white;
+
+}
+.img {
+	width: 60%;
+	/*float: left;*/ /* terrible and I'm not leaving it in */
+}
+
+ul {
+	text-align: left;
+	width: 200px;
+	margin: 0 auto;
+}
