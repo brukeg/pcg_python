@@ -1,0 +1,124 @@
+/* 
+Lab3 Scrimple
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Baloo+Chettan');
+
+.logo {
+    font-family: "Baloo Chettan", sans-serif;
+    font-size: 2.5rem;
+}
+
+.nav-link {
+    color: #000;
+}
+
+.account-nav {
+    padding-left: 20em;
+    padding-top: 1em;
+}
+
+.account-nav .outline {
+    background: none;
+    padding: 5px 22px;
+    border: 2px solid;
+    color: #007bff;
+}
+
+.call-to-action {
+    background: url("/banks.jpg");
+    background-size: cover;
+    background-position: 50% 50%;
+    padding: 7em;
+}
+
+.call-to-action .container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+.call-to-action .display-2 {
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
+}
+
+.call-to-action .lead {
+    color: #fff;
+    font-weight: bold;
+    font-size: 2em;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.6);
+    padding: .5em;
+    /*background-color: rgba(0, 0, 0, 0.4);*/
+    /*border-radius: 15px;*/
+}
+
+.lrlr .row {
+    display: flex;
+    align-items: center;
+}
+
+.left, .right {
+    padding: 12em 3em;
+}
+
+.left h2, .right h2 {
+    font-family: "Fugaz One", sans-serif;
+    font-size: 3em;
+    letter-spacing: 2px;
+}
+
+.lrlr-one {
+    background: #333;
+    color: #75AEB2;
+}
+
+.lrlr-one .right {
+    display: flex;
+    flex-direction: column;
+    padding-left: 15em;
+}
+
+.lrlr-two {
+    background: #C1FAFF;
+}
+
+.lrlr-two .left{
+    display: flex;
+    flex-direction: column;
+}
+
+.lrlr-two .right{
+    padding-left: 1em;
+}
+
+.lrlr-three .right{
+    display: flex;
+    flex-direction: column;
+    padding-left: 20em;
+}
+
+.clients {
+    display: flex;
+    height: 50vh;
+    min-height: 400px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.clients img {
+    width: 300px;
+}
+
+footer {
+    background: #333;
+    color: white;
+
+    padding: 3em;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3em;
+}
