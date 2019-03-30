@@ -1,0 +1,23 @@
+/*
+lab5, burrito order form
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Germania+One')
+
+header {
+	border-radius: 0;
+}
+
+h1 {
+    font-family: "Germania One", cursive;
+    font-size: 5rem;
+    color: white;
+}
+
+.order-form {
+	padding-left: 3em;
+}
+
+.personal-info {
+	padding-left: 3em;
+}
