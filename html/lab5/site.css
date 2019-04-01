@@ -18,6 +18,46 @@ h1 {
 	padding-left: 3em;
 }
 
-.personal-info {
+.container {
+	display: flex;
 	padding-left: 3em;
+	flex-direction: row;
+
+}
+
+.form-check {
+	padding-top: 1em;
+	padding-bottom: 2em;
+}
+
+h3 {
+	padding-top: .25em;
+	padding-bottom: .25em;
+}
+
+.form-row {
+	padding-left: 3em;
+	padding-right: 3em;
+}
+
+.form-group {
+	padding-left: 3em;
+	padding-right: 3em;
+}
+
+.submit {
+	margin-top: .5em;
+	margin-bottom: 2em;
+}
+
+footer {
+    background: #333;
+    color: white;
+    padding: 3em;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3em;
 }
