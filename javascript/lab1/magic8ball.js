@@ -1,7 +1,7 @@
 // Write a program to simulate the classic "Magic Eight Ball
 // 1. Print a welcome screen to the user.
 // 2. Use the random module's random.choice() to choose a prediction.
-// 3. Prompt the user to ask the 8-ball a question "will I win the lottery tomorrow?"
+// 3. Prompt the user to ask the 8-ball a question like, "will I win the lottery tomorrow?"
 // 4. Display the result of the 8-ball.
 // 5. Using a while loop, keep asking the user for a question, if they enter 'done', exit
 
@@ -10,7 +10,8 @@ const displayDiv = document.querySelector('#display')
 const submitButton = document.querySelector('#submit')
 
 // Variables:
-let resultDisplayText = 'Result...'
+let DefaultText = 'Result...'
+let resultText = ''
 
 const predictions = [
   "It is certain",
@@ -35,26 +36,21 @@ const predictions = [
   "Very doubtful"
 ]
 
-let randomIndex = Math.floor(Math.random() * predictions.length);
-let reply = predictions[randomIndex];
-
 // Functions:
 const updateDisplay = (value) => {
   displayDiv.innerText = value
 }
 
-updateDisplay(resultDisplayText) // display 0 at first
+// display 0 at first
+updateDisplay(DefaultText) 
 
 // submit button event listener
-submitButton.addEventListener('click', () => {
+submitButton.addEventListener('click', (evt) => {
+  let randomIndex = Math.floor(Math.random() * predictions.length);
+  let reply = predictions[randomIndex];
+  evt.preventDefault()
   updateDisplay(reply)
 })
-
-
-// console.log("Welcome to the fucking MAGIC 8-ball of glory!!");
-// prompt("Ask your question wisely: ").trim().toLowerCase();
-// let reply = Math.random(predictions);
-// console.log(reply);
 
 // while (true) { 
 //   let keep_playing = prompt("You may ask another question or enter DONE: ").trim().toLowerCase()
