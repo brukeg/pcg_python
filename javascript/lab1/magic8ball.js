@@ -5,6 +5,12 @@
 // 4. Display the result of the 8-ball.
 // 5. Using a while loop, keep asking the user for a question, if they enter 'done', exit
 
+// DOM selectors:
+const displayDiv = document.querySelector('#display')
+const submitButton = document.querySelector('#submit')
+
+// Variables:
+let resultDisplayText = 'Result...'
 
 const predictions = [
   "It is certain",
@@ -29,18 +35,34 @@ const predictions = [
   "Very doubtful"
 ]
 
-console.log("Welcome to the fucking MAGIC 8-ball of glory!!");
-prompt("Ask your question wisely: ").trim().toLowerCase();
-let reply = Math.random(predictions);
-console.log(reply);
+let randomIndex = Math.floor(Math.random() * predictions.length);
+let reply = predictions[randomIndex];
 
-while (true) { 
-  let keep_playing = prompt("You may ask another question or enter DONE: ").trim().toLowerCase()
-  if (keep_playing === 'done') {
-    console.log("Goodbye!")
-    break
-  } else {
-    keep_playing
-    console.log(reply)
-  }
+// Functions:
+const updateDisplay = (value) => {
+  displayDiv.innerText = value
 }
+
+updateDisplay(resultDisplayText) // display 0 at first
+
+// submit button event listener
+submitButton.addEventListener('click', () => {
+  updateDisplay(reply)
+})
+
+
+// console.log("Welcome to the fucking MAGIC 8-ball of glory!!");
+// prompt("Ask your question wisely: ").trim().toLowerCase();
+// let reply = Math.random(predictions);
+// console.log(reply);
+
+// while (true) { 
+//   let keep_playing = prompt("You may ask another question or enter DONE: ").trim().toLowerCase()
+//   if (keep_playing === 'done') {
+//     console.log("Goodbye!")
+//     break
+//   } else {
+//     keep_playing
+//     console.log(reply)
+//   }
+// }

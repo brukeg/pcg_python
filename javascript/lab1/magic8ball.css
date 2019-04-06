@@ -1,0 +1,17 @@
+.container {
+	margin: auto; 
+    /*display: grid;*/
+    display: flex;
+    justify-content: center;
+    padding: 100px 20px 100px 20px;
+}
+
+#display {
+    margin: 5px 5px 5px 5px;
+    font-size: xx-large;
+    text-align: center;  
+    background: lightblue;
+    box-sizing: content-box;
+    width: 50%;
+    border-radius: 5px;
+}
