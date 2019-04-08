@@ -41,27 +41,12 @@ const randomItem = (list) => {
   return list[randomIndex];
 }
 
-// Default display text
-updateDisplay('...Password') 
-
-// Event listeners
-lowercaseDiv.addEventListener('submit', () => {
-  const n_lower = document.getElementById("lowercase").value;
-})
-
-uppercaseDiv.addEventListener('submit', () => {
-  const n_upper = document.getElementById("uppercase").value;
-})
-
-numbersDiv.addEventListener('submit', () => {
-  const n_numbers = document.getElementById("numbers").value;
-})
-
-numbersDiv.addEventListener('submit', () => {
-  const n_special = document.getElementById("special").value;
-})
-
-submitButton.addEventListener('click', (evt) => {
+const callbackFn = (event) => {
+  const n_lower = parseFloat(document.getElementById("lowercase").value);
+  const n_upper = parseFloat(document.getElementById("uppercase").value);
+  const n_numbers = parseFloat(document.getElementById("numbers").value);
+  const n_special = parseFloat(document.getElementById("special").value);
+  
   let password = ''
 
   while (n_lower > 0) {
@@ -92,6 +77,66 @@ submitButton.addEventListener('click', (evt) => {
 // so the output isn't given in the order of the loop.
   password = password.split('') 
   shuffleArray(password) 
-  evt.preventDefault()
   updateDisplay(password.join(''))
-})
+}
+
+// Default display text
+updateDisplay('...Password') 
+
+// Event listeners
+// lowercaseDiv.addEventListener('submit', (evt) => {
+//   evt.preventDefault()
+//   const n_lower = parseFloat(evt.data);
+// })
+
+// uppercaseDiv.addEventListener('submit', (evt) => {
+//   evt.preventDefault()
+//   const n_upper = parseFloat(evt.data);
+// })
+
+// numbersDiv.addEventListener('submit', (evt) => {
+//   evt.preventDefault()
+//   const n_numbers = parseFloat(evt.data);
+// })
+
+// numbersDiv.addEventListener('submit', (evt) => {
+//   evt.preventDefault()
+//   const n_special = parseFloat(evt.data);
+// })
+
+submitButton.addEventListener('click', callbackFn)
+
+// submitButton.addEventListener('click', (evt) => {
+//   let password = ''
+
+//   while (n_lower > 0) {
+//     let lower = randomItem(characters)
+//     password += lower
+//     n_lower -= 1
+//   }  
+    
+//   while (n_upper > 0) {
+//     let upper = randomItem(characters.toUpperCase())
+//     password += upper
+//     n_upper -= 1
+//   }
+    
+//   while (n_numbers > 0) {
+//     let p_numbers = randomItem(numbers)
+//     password += p_numbers
+//     n_numbers -= 1
+//   }
+  
+//   while (n_special > 0) {
+//     let p_special = randomItem(special)
+//     password += p_special
+//     n_special -= 1  
+//   }
+  
+// // Cast password to a list and shuffle it, 
+// // so the output isn't given in the order of the loop.
+//   password = password.split('') 
+//   shuffleArray(password) 
+//   evt.preventDefault()
+//   updateDisplay(password.join(''))
+// })
