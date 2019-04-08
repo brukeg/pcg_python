@@ -10,6 +10,20 @@ uppercase letters, numbers, and special characters they'd like in their password
 Generate a password accordingly.
 */
 
+// DOM Selectors:
+const lowercaseDiv = document.querySelector('#lowercase')
+const uppercaseDiv = document.querySelector('#uppercase')
+const numbersDiv = document.querySelector('#numbers')
+const specialDiv = document.querySelector('#special')
+const submitButton = document.querySelector('#submit')
+const displayDiv = document.querySelector('#display')
+
+// Variables:
+const characters = 'abcdefghijklmnopqrstuvwxyz'
+const numbers = '1234567890'
+const special = '`~!@#$%^&*()_+=[{]\\}|:;<>?.'
+
+// Functions:
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -18,43 +32,66 @@ function shuffleArray(array) {
     return array
 }
 
-const characters = 'abcdefghijklmnopqrstuvwxyz'
-const numbers = '1234567890'
-const special = '`~!@#$%^&*()_+=[{]\\}|:;<>?.'
+const updateDisplay = (value) => {
+  displayDiv.innerText = value
+}
 
-let n_lower = Number(prompt("How many lowercase letters do you want?: "))
-let n_upper = Number(prompt("How many uppercase letters do you want?: "))
-let n_numbers = Number(prompt("How many numbers do you want?: "))
-let n_special = Number(prompt("How many special characters do you want?: "))
+const randomItem = (list) => {
+  let randomIndex = Math.floor(Math.random() * list.length);
+  return list[randomIndex];
+}
 
-let password = ''
+// Default display text
+updateDisplay('...Password') 
 
-while (n_lower > 0) {
-  let lower = Math.random(characters)
-  password += lower
-  n_lower -= 1
-}  
+// Event listeners
+lowercaseDiv.addEventListener('submit', () => {
+  const n_lower = document.getElementById("lowercase").value;
+})
+
+uppercaseDiv.addEventListener('submit', () => {
+  const n_upper = document.getElementById("uppercase").value;
+})
+
+numbersDiv.addEventListener('submit', () => {
+  const n_numbers = document.getElementById("numbers").value;
+})
+
+numbersDiv.addEventListener('submit', () => {
+  const n_special = document.getElementById("special").value;
+})
+
+submitButton.addEventListener('click', (evt) => {
+  let password = ''
+
+  while (n_lower > 0) {
+    let lower = randomItem(characters)
+    password += lower
+    n_lower -= 1
+  }  
+    
+  while (n_upper > 0) {
+    let upper = randomItem(characters.toUpperCase())
+    password += upper
+    n_upper -= 1
+  }
+    
+  while (n_numbers > 0) {
+    let p_numbers = randomItem(numbers)
+    password += p_numbers
+    n_numbers -= 1
+  }
   
-while (n_upper > 0) {
-  let upper = Math.random(characters.toUpperCase())
-  password += upper
-  n_upper -= 1
-}
+  while (n_special > 0) {
+    let p_special = randomItem(special)
+    password += p_special
+    n_special -= 1  
+  }
   
-while (n_numbers > 0) {
-  let p_numbers = Math.random(numbers)
-  password += p_numbers
-  n_numbers -= 1
-}
-
-while (n_special > 0) {
-  let p_special = random.choice(special)
-  password += p_special
-  n_special -= 1  
-}
-
-
-//cast password to a list and shuffle it so the output isn't given in the order of the loop.
-password = password.split('')
-shuffleArray(password) 
-console.log("This is your password: " + password.join(''))
+// Cast password to a list and shuffle it, 
+// so the output isn't given in the order of the loop.
+  password = password.split('') 
+  shuffleArray(password) 
+  evt.preventDefault()
+  updateDisplay(password.join(''))
+})
