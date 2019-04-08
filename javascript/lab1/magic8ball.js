@@ -11,7 +11,6 @@ const submitButton = document.querySelector('#submit')
 
 // Variables:
 let DefaultText = 'Result...'
-let resultText = ''
 
 const predictions = [
   "It is certain",
