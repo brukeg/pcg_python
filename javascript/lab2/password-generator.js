@@ -41,45 +41,6 @@ const randomItem = (list) => {
   return list[randomIndex];
 }
 
-// const callbackFn = (event) => {
-//   const n_lower = parseFloat(document.getElementById("lowercase").value);
-//   const n_upper = parseFloat(document.getElementById("uppercase").value);
-//   const n_numbers = parseFloat(document.getElementById("numbers").value);
-//   const n_special = parseFloat(document.getElementById("special").value);
-  
-//   let password = ''
-
-//   while (n_lower > 0) {
-//     let lower = randomItem(characters)
-//     password += lower
-//     n_lower -= 1
-//   }  
-    
-//   while (n_upper > 0) {
-//     let upper = randomItem(characters.toUpperCase())
-//     password += upper
-//     n_upper -= 1
-//   }
-    
-//   while (n_numbers > 0) {
-//     let p_numbers = randomItem(numbers)
-//     password += p_numbers
-//     n_numbers -= 1
-//   }
-  
-//   while (n_special > 0) {
-//     let p_special = randomItem(special)
-//     password += p_special
-//     n_special -= 1  
-//   }
-  
-// // Cast password to a list and shuffle it, 
-// // so the output isn't given in the order of the loop.
-//   password = password.split('') 
-//   shuffleArray(password) 
-//   updateDisplay(password.join(''))
-// }
-
 // Default display text
 updateDisplay('...Password') 
 
@@ -90,7 +51,7 @@ submitButton.addEventListener('click', (evt) => {
   let n_upper = parseFloat(uppercaseDiv.value);
   let n_numbers = parseFloat(numbersDiv.value);
   let n_special = parseFloat(specialDiv.value);
-  console.log(n_lower, n_upper, n_numbers, n_special)
+  
   let password = ''
 
   while (n_lower > 0) {
@@ -120,7 +81,6 @@ submitButton.addEventListener('click', (evt) => {
 // Cast password to a list and shuffle it, 
 // so the output isn't given in the order of the loop.
   password = password.split('') 
-  console.log(password)
   shuffleArray(password) 
   updateDisplay(password.join(''))
 })
