@@ -41,7 +41,7 @@ class Atm {
   deposit(amount) {
     this.balance += amount
     this.transactions.push(`Deposit of \$${amount}`)
-    let deposit_tx = (`Your deposit of \$${amount} was successful, and your current balance is \$${self.balance}`)
+    let deposit_tx = (`Your deposit of \$${amount} was successful, and your current balance is \$${this.balance}`)
     return deposit_tx
   }
 
@@ -53,7 +53,7 @@ class Atm {
     if (this.checkWithdraw(amount)) {
       this.balance -= amount
       this.transactions.push(`Withdrawal of \$${amount}`)
-      let withdraw_tx = (`Your withdraw of \$${amount} was successful and your current balance is \$${self.balance}`)
+      let withdraw_tx = (`Your withdraw of \$${amount} was successful and your current balance is \$${this.balance}`)
       return withdraw_tx
     } else {
       let inf = (`Insufficient funds for this transaction`)
@@ -63,9 +63,11 @@ class Atm {
   }
  
   showTransactions() {
-    for (let [counter, transaction] of this.transactions) {
-      return counter++, transaction
+    let transactions = ''
+    for (let [counter, transaction] of this.transactions.entries()) {
+      transactions +=  (counter+1) + ' ' + transaction + ', '
     }
+    return transactions
   }
 }
 
@@ -76,8 +78,9 @@ const depositDiv = document.querySelector('#deposit')
 const withdrawDiv = document.querySelector('#withdraw')
 const txnDiv = document.querySelector('#transactions')
 const digits = document.querySelectorAll('.num')
-const decDiv = document.querySelectorAll('#dec')
-const enterDiv = document.querySelectorAll('#enter')
+const decDiv = document.querySelector('#dec')
+const ceDiv = document.querySelector('#CE')
+const enterDiv = document.querySelector('#enter')
 
 // Variables:
 let balance = 0
@@ -102,6 +105,13 @@ const addDecimal = () => {
   }  
 }
 
+const clearEntry = () => {
+  itemAmount = ''
+  decimal = false
+  updateDisplay(balance)  
+}
+
+// Starting balance is 0
 updateDisplay(balance)
 
 // Instantiate Atm:
@@ -115,27 +125,33 @@ digits.forEach(elem => {
   })
 })
 
-decDiv.addEventListener('click', (evt) => {
+decDiv.addEventListener('click', () => {
   addDecimal()
 })
 
-balanceDiv.addEventListener('click', (evt) => {
+ceDiv.addEventListener('click', () => {
+  clearEntry()
+})
+
+balanceDiv.addEventListener('click', () => {
   updateDisplay(myAtm.checkBalance())
 })
 
-depositDiv.addEventListener('click', (evt) => {
-  myAtm.deposit(itemAmount)
+depositDiv.addEventListener('click', () => {
+  let amount = parseFloat(itemAmount)
+  updateDisplay(myAtm.deposit(amount))
 })
 
-withdrawDiv.addEventListener('click', (evt) => {
-  myAtm.withdraw(itemAmount)
+withdrawDiv.addEventListener('click', () => {
+  let amount = parseFloat(itemAmount)
+  updateDisplay(myAtm.withdraw(amount))
 })
 
-txnDiv.addEventListener('click', (evt) => {
+txnDiv.addEventListener('click', () => {
   updateDisplay(myAtm.showTransactions())
 })
 
-enterDiv.addEventListener('click', (evt) => {
+enterDiv.addEventListener('click', () => {
   
 })
 
