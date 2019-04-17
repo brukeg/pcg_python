@@ -4,36 +4,38 @@ body, html {
 }
 
 .container {
-    margin: auto; 
-    display: grid;
-    padding: 20px 20px 100px 20px;
-    background: rgba(102, 102, 51, 0.5);
-    font-family: Orbitron;
-    border-radius: 15px;
-    box-shadow: 3px 5px rgba(0, 0, 0, 0.5), inset -2px -3px 10px 2px rgba(0, 0, 0, 0.15);    
-    grid-template-columns: repeat(10);
-    grid-template-rows: repeat(9, 1fr);
-    gap: 4%;
-    grid-template-areas: 
-        "title      title       title       title       title       .           .           .           .           ."
-        "display    display     display     display     display     display     balance     balance     deposit     deposit"
-        "display    display     display     display     display     display     balance     balance     deposit     deposit"
-        "display    display     display     display     display     display     withdraw    withdraw    txns        txns"
-        "display    display     display     display     display     display     withdraw    withdraw    txns        txns"
-        "display    display     display     display     display     display     one         two         three       four"
-        "display    display     display     display     display     display     five        six         seven       eight"
-        "display    display     display     display     display     display     nine        zero        zero        decimal"
-        "display    display     display     display     display     display     enter       enter       enter       enter"
+  margin: auto; 
+  display: grid;
+  width: 800px;
+  height: 600px;
+  padding: 20px 20px 100px 20px;
+  background: rgba(102, 102, 51, 0.5);
+  font-family: Orbitron;
+  border-radius: 15px;
+  box-shadow: 3px 5px rgba(0, 0, 0, 0.5), inset -2px -3px 10px 2px rgba(0, 0, 0, 0.15);    
+  grid-template-columns: repeat(10);
+  grid-template-rows: repeat(9, 1fr);
+  gap: 4%;
+  grid-template-areas: 
+      "title      title       title       title       title       .           .           .           .           ."
+      "display    display     display     display     display     display     balance     balance     deposit     deposit"
+      "display    display     display     display     display     display     balance     balance     deposit     deposit"
+      "display    display     display     display     display     display     withdraw    withdraw    txns        txns"
+      "display    display     display     display     display     display     withdraw    withdraw    txns        txns"
+      "display    display     display     display     display     display     one         two         three       four"
+      "display    display     display     display     display     display     five        six         seven       eight"
+      "display    display     display     display     display     display     nine        zero        decimal     clear"
+      "display    display     display     display     display     display     enter       enter       enter       enter"
 }
 
 .btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    border-radius: 5px;
-    color: white;
-    box-shadow: 0px 2px rgba(0, 0, 0, 0.3), inset -1px -3px 10px 2px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border-radius: 5px;
+  color: white;
+  box-shadow: 0px 2px rgba(0, 0, 0, 0.3), inset -1px -3px 10px 2px rgba(0, 0, 0, 0.2);
 }
 
 .btn:hover {
@@ -47,29 +49,39 @@ body, html {
 }
 
 .btn:hover {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
 #atm-title {
-    grid-area: title;
-    font-style: italic;
-    font-size: large;
-    text-align: center;
-    color: #666633;
+  grid-area: title;
+  font-style: italic;
+  font-size: large;
+  text-align: center;
+  color: #666633;
+}
+
+#displayContainer {
+  grid-area: display;
 }
 
 #display {
   margin: 5px 0 10px 0;
+  width: 400px;
+  height: 500px;
+  overflow: auto;
   font-size: xx-large;
   text-align: left;  
   background: #d4d4aa;
   box-shadow: 0 0, inset -1px -3px 10px 2px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  grid-area: display;    
 }
 
 #dec {
   grid-area: decimal;
+}
+
+#CE {
+  grid-area: clear;
 }
 
 #enter {
@@ -92,41 +104,41 @@ body, html {
 }
 
 #one {
-    grid-area: one;
+  grid-area: one;
 }
 
 #two {
-    grid-area: two;
+  grid-area: two;
 }
 
 #three {
-    grid-area: three;
+  grid-area: three;
 }
 
 #four {
-    grid-area: four;
+  grid-area: four;
 }
 
 #five {
-    grid-area: five;
+  grid-area: five;
 }
 
 #six {
-    grid-area: six;
+  grid-area: six;
 }
 
 #seven {
-    grid-area: seven;
+  grid-area: seven;
 }
 
 #eight {
-    grid-area: eight;
+  grid-area: eight;
 }
 
 #nine {
-    grid-area: nine;
+  grid-area: nine;
 }
 
 #zero {
-    grid-area: zero;
+  grid-area: zero;
 }
