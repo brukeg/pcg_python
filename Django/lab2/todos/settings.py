@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'todos.urls'
+ROOT_URLCONF = 'todos.urls'  # todo_list.urls?
 
 TEMPLATES = [
     {
@@ -124,5 +124,5 @@ STATICFILES_DIRS = (
     os.path.join(
         os.path.dirname(__file__),
         'static',
-    ),    
+    ),
 )
