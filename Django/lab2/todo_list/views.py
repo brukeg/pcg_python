@@ -12,7 +12,6 @@ def index(request):
 
 def add_todo(request):
     if request.method == 'POST':
-        print(request.POST)
         text_from_input = request.POST['todo']  # name in index name='todo'
         todo = ToDo(text=text_from_input)
         todo.save()
@@ -32,9 +31,10 @@ def delete_todo(request, pk):
 
 
 def edit_todo(request, pk):
-    # return HttpResponse('success')  # replace with button
     todo = get_object_or_404(ToDo, pk=pk)
-    todo.text = request.POST['text']
-    todo.created_date = timezone.now()
-    todo.save()
-    return render(request, 'todo_list/index.html', {'todo': todo})
+    if request.method == 'POST':
+        todo.text = request.POST['text']
+        todo.created_date = timezone.now()
+        todo.save()
+    return redirect('todos:index')
+    # return render(request, 'todo_list/index.html', {'todo': todo})

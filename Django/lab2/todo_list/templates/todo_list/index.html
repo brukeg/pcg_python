@@ -26,6 +26,7 @@
                             <i class='fa fa-check'></i>
                         {% endif %}
                     </a>
+                    <a href="{% url 'todos:edit_todo' pk=todo.pk%}"><i class="far fa-edit"></i></a>
                 </li>
             {% endfor %}
         </ul>
