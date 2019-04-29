@@ -17,12 +17,12 @@ Rebuild my company website, [Silamoney.com](https://www.silamoney.com), in Djang
 ## Features
 Pages:
 1. Home (index): will include a rundown of what are product is, technical use cases, how it works, who is involved in the company, and how to contact us (w/included chat widget). The following links will also be included:
-  - home: a link back to `silamoney.com/#`.
-  - contact sales: mailto:contact@silamoney.com.
-  - careers: an external link to our company Indeed profile.
-  - blog: an external link to our company blog hosted by Medium.
-  - news: a page containing recent press write-ups.
-  - about: a page containing bio information about our team.
+  1. home: a link back to `silamoney.com/#`.
+  1. contact sales: mailto:contact@silamoney.com.
+  1. careers: an external link to our company Indeed profile.
+  1. blog: an external link to our company blog hosted by Medium.
+  1. news: a page containing recent press write-ups.
+  1. about: a page containing bio information about our team.
 2. Docs: an external link to our API documentation hosted by slate. This will be in both the header, footer, and possibly in the body.
 3. Demo: my primary milestone will be a demonstration of our API, so a customer can input dummy user data to see how our API links bank accounts, identifies users, and sends money. This will be a page on the website, like, silamoney.com/demo
 4. Login: this will be a page where existing users can login to their accounts and access their developer console.
@@ -34,14 +34,14 @@ Pages:
 1. Demo: as a prospective customer I want to see how Sila's API could be implemented. I want to input dummy user data and see how account linking, ID verification, and money transfers work before I commit.
 **backlog:**
 - [ ] Use Python [SDK](https://github.com/Sila-Money/Sila-Python) to build demo application.
-- [ ] 
-- [ ]
+- [ ] backlog 
+- [ ] backlog
 
 2. Sandbox: as a customer of Sila I want to start building my application in an evironment that's safe and easy to use before I request production access to Sila.
 **backlog:**
 - [ ] Require all prospective customers to register as a developer.
-- [ ]
-- [ ]
+- [ ] backlog
+- [ ] backlog
 
 3. Console: as a customer of Sila I need to see all the apps I have in sandbox and production in one place. I should also be able to see associated data like user count or transaction count by day, week, and month. In addition I need to be able to update my billing information.
 **backlog:**
@@ -71,33 +71,33 @@ Pages:
 
 ## Schedule
 1. Milestone 1: Demo, 1-2 weeks, easily the hardest and most involved because I'll building it from scratch excepting the SDK. I'll use Django and React to implement our API to show off what an application could look like. Sprint one, is to get a Django app running which displays all the forms. Sprint two will be to wire up the forms so they function and make calls to our API. Demo takes the data model above.
-- Essential features:
-- Really-great-to-haves:
-- Nice-to-haves:
+ 1. Essential features:
+ 1. Really-great-to-haves:
+ 1. Nice-to-haves:
 
 
 2. Milestone 2: Register, 1 week, I'll be re-writing an existing codebase in Django/React. Sprint one, will be to wire up the forms so they function and make calls to our API. Register takes the data model above.
-- Essential features:
-- Really-great-to-haves:
-- Nice-to-haves:
+ 1. Essential features:
+ 1. Really-great-to-haves:
+ 1. Nice-to-haves:
 
 
 3. Milestone 3: Home, 1 week, I'll be re-writing an existing codebase in Django/React. Sprint one, is to get a Django app running which displays all the current company information outlined in Features above.
-- Essential features:
-- Really-great-to-haves:
-- Nice-to-haves:
+ 1. Essential features:
+ 1. Really-great-to-haves:
+ 1. Nice-to-haves:
 
 
 4. Milestone 4: Login, 1 week, I'll be re-writing an existing codebase in Django/React. **This will commence after class.** Sprint one, will be to wire up the forms so they function and make calls to our API. Login takes handle and passphrase only.
-- Essential features:
-- Really-great-to-haves:
-- Nice-to-haves:
+ 1. Essential features:
+ 1. Really-great-to-haves:
+ 1. Nice-to-haves:
 
 
 5. Milestone 5: Console, 1-2 weeks, I'll be re-writing an existing codebase in Django/React. **This will commence after class.** First sprint, is to get a Django app running which displays all the apps and users information. Sprint to will be focused on displaying application data.
-- Essential features:
-- Really-great-to-haves:
-- Nice-to-haves:
+ 1. Essential features:
+ 1. Really-great-to-haves:
+ 1. Nice-to-haves:
 
 
 
