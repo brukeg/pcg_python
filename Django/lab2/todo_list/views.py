@@ -33,8 +33,11 @@ def delete_todo(request, pk):
 def edit_todo(request, pk):
     todo = get_object_or_404(ToDo, pk=pk)
     if request.method == 'POST':
-        todo.text = request.POST['text']
-        todo.created_date = timezone.now()
+        todo.text = request.POST['todo']
+        todo = ToDo(text=todo.text)
+        # todo.created_date = timezone.now()
         todo.save()
+    else:
+        
     return redirect('todos:index')
     # return render(request, 'todo_list/index.html', {'todo': todo})
