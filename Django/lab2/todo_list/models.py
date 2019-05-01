@@ -8,7 +8,7 @@ class ToDo(models.Model):
     text = models.CharField(max_length=200)
     completed = models.BooleanField(default=False)
     created_date = models.DateTimeField(default=timezone.now)
-    completed_date = models.DateTimeField(blank=True, null=True)  # nuke blank?
+    completed_date = models.DateTimeField(blank=True, null=True)
 
     def toggle(self):
         """ if completed true set to false and vis versa """

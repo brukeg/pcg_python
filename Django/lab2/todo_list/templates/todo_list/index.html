@@ -17,7 +17,10 @@
         <ul id='todos-container'>
             {% for todo in todos %} <!-- todos refers to index() todos variable  -->
                 <li class="{% if todo.completed %} completed {% endif %}"> <!-- todo -->
-                    {{ todo }} <!-- todo -->
+                    {% if editing %}
+                        <input id="edit" name="edit" type="text" value='{{todo.text'}} />
+                    {% else %}
+                        {{ todo }} <!-- todo -->
                     <a href="{% url 'todos:delete_todo' pk=todo.pk %}"><i class='fa fa-times'></i></a> <!-- todo.pk -->
                     <a href="{% url 'todos:toggle_todo' pk=todo.pk %}"> <!-- todo.pk -->
                         {% if todo.completed_date %}
@@ -26,7 +29,7 @@
                             <i class='fa fa-check'></i>
                         {% endif %}
                     </a>
-                    <a href="{% url 'todos:edit_todo' pk=todo.pk%}"><i class="far fa-edit"></i></a>
+                    <a href="{% url 'todos:edit_view' pk=todo.pk %}"><i class='fa fa-pencil-alt'></i></a>
                 </li>
             {% endfor %}
         </ul>
