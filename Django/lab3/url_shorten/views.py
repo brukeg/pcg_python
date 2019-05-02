@@ -12,13 +12,17 @@ def index(request):
 def shorten(request):
     if request.method == 'POST':
         url_input = request.POST['url']  # <input name in index.html name=''
-        url = URL(long_url=url_input, short=randomize(url_input))  # url_input
-        url.save()
-    return redirect('urlshorten:index')  # app name from urls.py
+        url = URL.objects.filter(long_url=url_input).first()
+
+        if not url:
+            url = URL(long_url=url_input, short=randomize(url_input))  # url_input
+            url.save()
+        return render(request, 'url_shorten/index.html', {'short': url.short})  # app name from urls.py
 
 
-def redirect(request, short_url):  # short_url
+def redirectr(request, short_url):  # short_url
     url = get_object_or_404(URL, short=short_url)  # short_url
+    print(url.long_url)
     return redirect(url.long_url)
 
 

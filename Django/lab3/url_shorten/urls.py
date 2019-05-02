@@ -9,5 +9,5 @@ app_name = 'urlshorten'  # for name spacing
 urlpatterns = [
     path('', views.index, name='index'),
     path('urlshorten/shorten', views.shorten, name='shorten'),
-    path('<short_url>', views.redirect, name='redirect'),
+    path('<short_url>', views.redirectr, name='redirect'),
     ]
