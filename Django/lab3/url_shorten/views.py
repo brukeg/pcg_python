@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import URL
+from . import urls
 from random import choice, shuffle
 
 
@@ -12,12 +13,13 @@ def index(request):
 def shorten(request):
     if request.method == 'POST':
         url_input = request.POST['url']  # <input name in index.html name=''
-        url = URL.objects.filter(long_url=url_input).first()
+        # query for uniqueness:
+        url = URL.objects.filter(long_url=url_input).first()  
 
         if not url:
-            url = URL(long_url=url_input, short=randomize(url_input))  # url_input
+            url = URL(long_url=url_input, short=randomize(url_input))
             url.save()
-        return render(request, 'url_shorten/index.html', {'short': url.short})  # app name from urls.py
+        return render(request, 'url_shorten/index.html', {'short': url.short, 'index': request.get_host()})
 
 
 def redirectr(request, short_url):  # short_url

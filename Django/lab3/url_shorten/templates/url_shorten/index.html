@@ -8,7 +8,7 @@
         <link rel='stylesheet' href='{% static "url_shorten/css/stylesheet.css" %}'>
     {% endblock main_styles %}
 </head>
-<body>
+<body> 
     <div id='app'>
         <h1>Welcome to the URL Shortener!</h1>
         <form action="{% url 'urlshorten:shorten' %}" method='POST'>
@@ -17,10 +17,13 @@
             <input id='url-input' type='text' name='url' placeholder='Enter a URL to shorten...' required/> 
             <button type='submit'>click</button>
         </form>
-        <ul id='short-url-container'>
-            <li class="{% if short %} shorten {% endif %}">{{ short }}</li>
-        </ul>
+        <div id='short-url-container'>
+            <br>
+            <span class="{% if short %} shorten {% endif %}">{{ index }}/{{ short }}</span>
+        </div>
     </div>
 
 </body>
 </html>
+
+{# object['index'] === object.index #}
