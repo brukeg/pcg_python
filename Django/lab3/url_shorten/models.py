@@ -1,5 +1,4 @@
 from django.db import models
-from random import choice, shuffle
 
 
 class URL(models.Model):
