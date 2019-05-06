@@ -36,6 +36,7 @@ def edit_view(request, pk):
         'todos': [todo],
         'pk': todo.pk,
         'editing': True
+
     })
 
 def edit_todo(request, pk):
