@@ -15,9 +15,14 @@ function code() {
   fetch('snake.txt')
     .then(response => response.text())
     .then((data) => {
-      console.log(typeof(data))
-      
-    })   
+      // console.log(data)
+      code_list = []
+      for (let i = 0; i <= data.length; i++) {
+        code_list += data[i]
+      }
+      // console.log(code_list)
+      return code_list
+    })
 }
 const updateDisplay = (value) => {
   codeArea.innerText = value
