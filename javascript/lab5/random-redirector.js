@@ -12,19 +12,20 @@ iframe when a button is clicked.
 
 
 // DOM Selectors:
-
+// const newPage = document.querySelector('.page')
+const randomButton = document.querySelector('#rando')
 
 // Variables:
 const urls = [
-	"https://www.reddit.com/r/dankmemes/",
-	"https://twitter.com/DankMemePlug",
-	"https://www.facebook.com/PlaceForMemes",
-	"https://www.tumblr.com/search/dank%20memes",
-	"https://www.facebook.com/DankQualityMemes/",
-	"https://browsedankmemes.com",
-	"https://www.instagram.com/explore/tags/memesdaily/",
-	"https://www.youtube.com/channel/UCAToczv95SVPQXYVycoqUKg",
-	"https://dankmemeuniversity.tumblr.com",
+  "https://www.reddit.com/r/dankmemes/",
+  "https://twitter.com/DankMemePlug",
+  "https://www.facebook.com/PlaceForMemes",
+  "https://www.tumblr.com/search/dank%20memes",
+  "https://www.facebook.com/DankQualityMemes/",
+  "https://browsedankmemes.com",
+  "https://www.instagram.com/explore/tags/memesdaily/",
+  "https://www.youtube.com/channel/UCAToczv95SVPQXYVycoqUKg",
+  "https://dankmemeuniversity.tumblr.com",
 ]
 
 // Functions:
@@ -33,10 +34,16 @@ const randomItem = (list) => {
   return list[randomIndex];
 }
 
-const redirector = () => {
-	setTimeout(function() {
-  		window.location.href = randomItem(urls)
-	}, 3000);
-}
+// const redirector = () => {
+//  setTimeout(function() {
+//      window.location.href = randomItem(urls)
+//  }, 5000);
+// }
 
-redirector()
+// redirector()
+
+
+// Event Listener
+randomButton.addEventListener('click', (evt) => {
+  document.location.href = randomItem(urls);
+})
