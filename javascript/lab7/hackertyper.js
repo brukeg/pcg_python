@@ -28,7 +28,6 @@ async function code() {
 // Event listeners
 async function typing() {
   const data = await code()
-  console.log(typeof(data))
   let start = 0
   let stop = 2
   let text = ''
@@ -43,5 +42,4 @@ async function typing() {
   })
 }
 
-typing()
-
+typing();
