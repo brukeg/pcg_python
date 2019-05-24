@@ -1,11 +1,19 @@
-/*body {
-
+body {
+  
 }
 
 h1 {
 
 }
 
-a {
-  
-}*/
+.header {
+  margin-bottom: 5em;
+  margin: 2em;
+}
+
+.page {
+  border: dotted;
+  margin: 0 auto;
+  display: block;
+  min-width: 50%;
+}
