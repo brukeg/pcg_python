@@ -15,6 +15,7 @@ iframe when a button is clicked.
 // const newPage = document.querySelector('.page')
 const randomButton = document.querySelector('#rando')
 
+
 // Variables:
 const urls = [
   "https://www.reddit.com/r/dankmemes/",
@@ -24,7 +25,7 @@ const urls = [
   "https://www.facebook.com/DankQualityMemes/",
   "https://browsedankmemes.com",
   "https://www.instagram.com/explore/tags/memesdaily/",
-  "https://www.youtube.com/channel/UCAToczv95SVPQXYVycoqUKg",
+  "https://www.youtube.com/embed/UCAToczv95SVPQXYVycoqUKg",
   "https://dankmemeuniversity.tumblr.com",
 ]
 
@@ -41,9 +42,10 @@ const randomItem = (list) => {
 // }
 
 // redirector()
+// document.location.href = randomItem(urls);
 
 
 // Event Listener
 randomButton.addEventListener('click', (evt) => {
-  document.location.href = randomItem(urls);
+  document.getElementById('page').src = randomItem(urls);
 })
