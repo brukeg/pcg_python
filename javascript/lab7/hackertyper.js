@@ -11,45 +11,37 @@ use event.preventDefault() to stop the original character from being typed.
 const codeArea = document.querySelector('.hacker-area')
 
 // Functions:
-function code() {
-  fetch('snake.txt')
-    .then(response => response.text())
-    .then((data) => {
-      // console.log(data)
-      code_list = []
-      for (let i = 0; i <= data.length; i++) {
-        code_list += data[i]
-      }
-      // console.log(code_list)
-      return code_list
-    })
-}
 const updateDisplay = (value) => {
   codeArea.innerText = value
 }
 
 // Function call & Default display text
-console.log(code())
 updateDisplay('Start typing...')
 
+//  async functions
+async function code() {
+  const response = await fetch('snake.txt')
+  const code = await response.text()
+  return code
+}
 
 // Event listeners
-codeArea.addEventListener("keydown", (event) => {
-  event.preventDefault()
+async function typing() {
+  const data = await code()
+  console.log(typeof(data))
+  let start = 0
+  let stop = 2
+  let text = ''
+  
+  document.addEventListener("keydown", (event) => {
+    event.preventDefault()
+    //  on each key down updateDisplay with data.slice(start, stop)
+    text += data.slice(start, stop)
+    updateDisplay(text)
+    start += 2
+    stop += 2
+  })
+}
 
-    // console.log(data.length)
-    // let list = []
-    // for (let i = 0; i < data.length; i++) {
-    //   list += data[i]
-    // }
-    // updateDisplay(data)
-    // console.log(list)
-})
+typing()
 
-
-
-/*
-var rtn= new RegExp("\n", "g"); // newline regex
-var rts= new RegExp("\\s", "g"); // whitespace regex
-var rtt= new RegExp("\\t", "g"); // tab regex
-*/
