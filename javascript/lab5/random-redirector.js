@@ -47,6 +47,5 @@ const randomItem = (list) => {
 // Version 2 event listener:
 randomButton.addEventListener('click', (evt) => {
   document.getElementById('page').src = randomItem(urls);
-  console.log(document.getElementById('page').src)
 })
 
