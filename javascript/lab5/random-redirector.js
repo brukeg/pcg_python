@@ -12,21 +12,20 @@ iframe when a button is clicked.
 
 
 // DOM Selectors:
-// const newPage = document.querySelector('.page')
 const randomButton = document.querySelector('#rando')
 
 
 // Variables:
 const urls = [
-  "https://www.reddit.com/r/dankmemes/",
-  "https://twitter.com/DankMemePlug",
-  "https://www.facebook.com/PlaceForMemes",
-  "https://www.tumblr.com/search/dank%20memes",
-  "https://www.facebook.com/DankQualityMemes/",
-  "https://browsedankmemes.com",
-  "https://www.instagram.com/explore/tags/memesdaily/",
-  "https://www.youtube.com/embed/UCAToczv95SVPQXYVycoqUKg",
-  "https://dankmemeuniversity.tumblr.com",
+  "https://www.bbc.com",
+  "https://www.bbc.com/sport",
+  "https://www.bbc.com/reel/",
+  "http://www.bbc.com/travel/",
+  "http://www.bbc.com/capital/",
+  "https://www.bbc.com/sport/football",
+  "https://www.bbc.com/sport/formula1",
+  "https://www.bbc.com/sport/rugby-union",
+  "https://www.bbc.com/sport/cycling",
 ]
 
 // Functions:
@@ -35,17 +34,19 @@ const randomItem = (list) => {
   return list[randomIndex];
 }
 
+// Version 1:
 // const redirector = () => {
 //  setTimeout(function() {
 //      window.location.href = randomItem(urls)
 //  }, 5000);
 // }
-
 // redirector()
-// document.location.href = randomItem(urls);
 
 
-// Event Listener
+
+// Version 2 event listener:
 randomButton.addEventListener('click', (evt) => {
   document.getElementById('page').src = randomItem(urls);
+  console.log(document.getElementById('page').src)
 })
+
